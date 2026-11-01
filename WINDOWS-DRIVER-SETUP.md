@@ -35,8 +35,8 @@ planned for 0.2.0; it does not mean that component has already been released.
 4. **Restart Windows yourself.** The command changes a boot option; it does not
    enable test signing in the session that is already running. See Microsoft's
    [test-signing instructions](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/the-testsigning-boot-configuration-option).
-5. Open Styrit's **System** settings and select **Refresh** in the driver section.
-   Setup also checks the active Windows session before driver installation.
+5. Run the complete Styrit setup again. It checks the active Windows session
+   before offering driver installation.
 
 The driver step is available only when test signing is active, Secure Boot is off
 or unsupported, and the memory-integrity state is supported by the package.
@@ -54,9 +54,9 @@ Windows Code Integrity event log with your administrator if needed.
 
 ## Install the driver and certificate
 
-Select **App with Styrit driver** in a setup that includes the optional component,
-or use **Install driver** / **Repair driver** in the desktop app's System settings.
-Stop playback and finish active measurements or profile operations first.
+Run the complete Styrit setup and select **App with Styrit driver**. To install
+or repair the driver later, run that setup again. The app does not contain driver
+installation or repair actions. Close the app before running setup manually.
 
 Approve the administrator prompt only if you intended to install the driver.
 Before importing the dedicated Styrit test certificate, the helper displays its
@@ -75,7 +75,9 @@ The installer remembers your component choice for your user. An update without a
 saved choice, including an upgrade from 0.1.0, does not introduce a driver or
 certificate installation automatically. A compatible driver is reused without a
 new administrator prompt. If Windows no longer meets the prerequisites, the app
-can update while the optional driver step remains pending in System settings.
+can update while the optional driver step remains deferred. If you then try to
+start the Styrit source, the app explains why it cannot start. Prepare Windows
+using this guide and run the complete setup again to finish the driver step.
 
 Removing the app leaves the shared driver and test certificate installed. Use the
 separate **Styrit Virtual Audio Driver** uninstaller to remove the Styrit driver.
